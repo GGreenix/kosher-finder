@@ -1,10 +1,12 @@
 // Header.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Image, StyleSheet } from 'react-native';
-import { Restaurant, KosherType } from '../Types';
+import { Restaurant, KosherType, Synagogue, Category } from '../Types';
 import { RestaurantCard } from '../ResturantCard';
-import { styles } from '../styles';
+import { styles, synagogueStyles } from '../styles';
 import { RestaurantsSection } from './resturants';
+import { SynagogueCard } from '../SynagogueCard';
+import Categories from '../Categories';
 
 const Header = () => (
   <View style={styles.header}>
@@ -15,30 +17,7 @@ const Header = () => (
   </View>
 );
 
-// Categories.jsx
-const Categories = () => {
-  const categories = [
-    { icon: 'bowl-mix', label: 'Restaurants' },
-    { icon: 'shopping', label: 'Groceries' },
-    { icon: 'pill', label: 'Pharmacies' },
-    { icon: 'beer', label: 'Alcohol' },
-    { icon: 'dog', label: 'Pet Shop' },
-  ];
 
-  return (
-    <ScrollView 
-      horizontal 
-      showsHorizontalScrollIndicator={false}
-      style={styles.categoriesContainer}
-    >
-      {categories.map((category, index) => (
-        <TouchableOpacity key={index} style={styles.categoryItem}>
-          <Text style={styles.categoryLabel}>{category.label}</Text>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
-};
 
 // PromotionBanner.jsx
 const PromotionBanner = () => (
@@ -55,9 +34,18 @@ const PromotionBanner = () => (
 
 
 
-// HomeScreen.jsx
-const HomeScreen = () => {
-   const restaurants: Restaurant[] = [
+// HomeScreen.tsx
+const HomeScreen: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<string>('restaurants');
+
+  const categories: Category[] = [
+    { id: 'restaurants', icon: 'bowl-mix', label: 'Restaurants' },
+    { id: 'groceries', icon: 'shopping', label: 'Groceries' },
+    { id: 'synagogues', icon: 'star-of-david', label: 'Synagogues' },
+    { id: 'alcohol', icon: 'beer', label: 'Alcohol' },
+  ];
+
+  const restaurants: Restaurant[] = [
     {
       id: 1,
       name: 'Atza Sushi Bar | Hadera',
@@ -147,14 +135,66 @@ const HomeScreen = () => {
       sponsored: true,
     },
   ];
-  
+
+  const mockSynagogues: Synagogue[] = [
+    {
+      id: 1,
+      name: 'Beit Knesset HaGadol',
+      type: 'Ashkenazi',
+      nextPrayer: 'Mincha',
+      prayerTime: '16:30',
+      rabbi: 'Rabbi David Cohen',
+      address: 'HaRav Kook 12',
+      image: 'https://via.placeholder.com/300',
+    },
+    {
+      id: 2,
+      name: 'Or HaChaim',
+      type: 'Sephardi',
+      nextPrayer: 'Arvit',
+      prayerTime: '19:45',
+      rabbi: 'Rabbi Yosef Mor',
+      address: 'Herzl 45',
+      image: 'https://via.placeholder.com/300',
+    },
+    // Add more synagogues...
+  ];
+
+  const renderContent = () => {
+    switch (activeCategory) {
+      case 'restaurants':
+        return (
+          <View style={styles.restaurantsGrid}>
+            {restaurants.map(restaurant => (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            ))}
+          </View>
+        );
+      case 'synagogues':
+        return (
+          <View style={synagogueStyles.synagoguesList}>
+            {mockSynagogues.map(synagogue => (
+              <SynagogueCard key={synagogue.id} synagogue={synagogue} />
+            ))}
+          </View>
+        );
+      // Add other cases for groceries and alcohol...
+      default:
+        return null;
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header />
       <ScrollView style={styles.scrollView}>
-        <Categories />
-        <PromotionBanner />
-        <RestaurantsSection restaurants={restaurants} />
+        <Categories 
+          categories={categories} 
+          activeCategory={activeCategory}
+          onSelectCategory={setActiveCategory}
+        />
+        <PromotionBanner/>
+        {renderContent()}
       </ScrollView>
     </SafeAreaView>
   );
