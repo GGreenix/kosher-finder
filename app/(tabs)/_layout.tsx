@@ -10,10 +10,13 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      screenOptions={{
+    screenOptions={({ route }) => ({
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarStyle: route.name.startsWith('restaurants') 
+          ? { display: 'none' }  // Hide for specific routes
+          : {},
+        })}>
       <Tabs.Screen
         name="index"
         options={{
