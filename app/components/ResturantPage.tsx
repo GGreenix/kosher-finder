@@ -12,7 +12,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { Restaurant } from '@/app/Types';
 
 
@@ -64,6 +64,9 @@ const RestaurantPage: React.FC<RestaurantCardProps> = (restaurantProps) => {
   }
 
   return (
+    <>
+    <Stack.Screen options={{ headerShown: false }} />
+
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -136,6 +139,7 @@ const RestaurantPage: React.FC<RestaurantCardProps> = (restaurantProps) => {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </>
   );
 };
 

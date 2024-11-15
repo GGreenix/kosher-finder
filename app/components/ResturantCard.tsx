@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { Restaurant } from './Types';
-import { restaurantStyles } from './styles';
+import { Restaurant } from '../Types';
+import { restaurantStyles } from '../styles/styles';
 import { useRouter} from 'expo-router'; // Import useRouter for navigation
 
 interface RestaurantCardProps {

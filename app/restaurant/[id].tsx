@@ -4,8 +4,8 @@ import React from 'react';
 import { Text } from 'react-native';
 
 
-import RestaurantPage from '@/app/ResturantPage';
-import { Restaurant } from '../../Types';
+import RestaurantPage from '@/app/components/ResturantPage';
+import { Restaurant } from '../Types';
 
 // Mock Data
 const mockRestaurants: Restaurant[] = [

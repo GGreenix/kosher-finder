@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity, TextInput, SafeAreaView, ScrollView } from "react-native";
-import { Icon } from "react-native-vector-icons/Icon";
-
-import { Image } from 'react-native';
-import { synagogueStyles } from "./styles";
-import { Synagogue } from "./Types";
 // SynagogueCard.tsx
+import React from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { Synagogue } from '../Types';
+import { synagogueStyles } from '../styles/styles';
+import { useRouter } from 'expo-router';
+
 interface SynagogueCardProps {
-    synagogue: Synagogue;
-  }
-  
-  export const SynagogueCard: React.FC<SynagogueCardProps> = ({ synagogue }) => (
-    <TouchableOpacity style={synagogueStyles.synagogueCard}>
+  synagogue: Synagogue;
+}
+
+export const SynagogueCard: React.FC<SynagogueCardProps> = ({ synagogue }) => {
+  const router = useRouter();
+
+  return (
+    <TouchableOpacity
+      style={synagogueStyles.synagogueCard}
+      onPress={() => router.push(`/synagogue/${synagogue.id}`)}
+    >
       <Image source={{ uri: synagogue.image }} style={synagogueStyles.synagogueImage} />
       <View style={synagogueStyles.synagogueInfo}>
         <Text style={synagogueStyles.synagogueName}>{synagogue.name}</Text>
@@ -27,3 +32,4 @@ interface SynagogueCardProps {
       </View>
     </TouchableOpacity>
   );
+};

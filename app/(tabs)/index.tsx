@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Image, StyleSheet } from 'react-native';
 import { Restaurant, KosherType, Synagogue, Category } from '../Types';
-import { RestaurantCard } from '../ResturantCard';
-import { styles, synagogueStyles } from '../styles';
-import { SynagogueCard } from '../SynagogueCard';
-import Categories from '../Categories';
+import { RestaurantCard } from '../components/ResturantCard';
+import { styles, synagogueStyles } from '../styles/styles';
+import Categories from '../components/Categories';
+import { SynagogueCard } from '../components/SynagogueCard';
 
 const Header = () => (
   <View style={styles.header}>

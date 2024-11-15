@@ -1,7 +1,7 @@
 // Categories.tsx
 import React from 'react';
 import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Category } from './Types';
+import { Category } from '../Types';
 
 
 // Categories.tsx

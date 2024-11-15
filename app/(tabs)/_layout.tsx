@@ -13,9 +13,7 @@ export default function TabLayout() {
     screenOptions={({ route }) => ({
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarStyle: route.name.startsWith('restaurants') 
-          ? { display: 'none' }  // Hide for specific routes
-          : {},
+        
         })}>
       <Tabs.Screen
         name="index"
@@ -26,15 +24,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="RestaurantsSection"
-        options={{
-          title: 'RestaurantsSection',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+      
     </Tabs>
   );
 }
