@@ -2,9 +2,10 @@
 import React from 'react';
 import { View, ScrollView, TouchableOpacity, Text } from 'react-native';
 
-import { styles } from '../styles/styles';
-import { Restaurant } from '../Types';
+
 import { RestaurantCard } from './ResturantCard';
+import { styles } from '@/app/styles/styles';
+import { Restaurant } from '@/app/Types';
 
 // RestaurantsSection.tsx
 interface RestaurantsSectionProps {

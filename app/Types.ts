@@ -40,3 +40,16 @@ export interface Category {
   icon: string;
   label: string;
 }
+
+// Types.ts
+export interface Mikvah {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  openingHours: string;
+  rabbi: string;
+  menSection: boolean;
+  womenSection: boolean;
+  image: string;
+}

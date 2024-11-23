@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { Restaurant } from '../Types';
-import { restaurantStyles } from '../styles/styles';
+
 import { useRouter} from 'expo-router'; // Import useRouter for navigation
+import { restaurantStyles } from '@/app/styles/styles';
+import { Restaurant } from '@/app/Types';
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
@@ -14,7 +15,7 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
   return (
     <TouchableOpacity
       style={restaurantStyles.restaurantCard}
-      onPress={() => router.push(`/restaurant/${restaurant.id}`)} // Navigate to dynamic restaurant page
+      onPress={() => router.push(`/components/resturant/${restaurant.id}`)} // Navigate to dynamic restaurant page
     >
       <Image
         source={{ uri: restaurant.image }}

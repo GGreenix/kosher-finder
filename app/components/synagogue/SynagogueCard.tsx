@@ -1,9 +1,10 @@
 // SynagogueCard.tsx
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { Synagogue } from '../Types';
-import { synagogueStyles } from '../styles/styles';
+
 import { useRouter } from 'expo-router';
+import { synagogueStyles } from '@/app/styles/styles';
+import { Synagogue } from '@/app/Types';
 
 interface SynagogueCardProps {
   synagogue: Synagogue;
@@ -15,7 +16,7 @@ export const SynagogueCard: React.FC<SynagogueCardProps> = ({ synagogue }) => {
   return (
     <TouchableOpacity
       style={synagogueStyles.synagogueCard}
-      onPress={() => router.push(`/synagogue/${synagogue.id}`)}
+      onPress={() => router.push(`/components/synagogue/${synagogue.id}`)}
     >
       <Image source={{ uri: synagogue.image }} style={synagogueStyles.synagogueImage} />
       <View style={synagogueStyles.synagogueInfo}>

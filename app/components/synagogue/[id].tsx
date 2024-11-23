@@ -13,20 +13,49 @@ import {
 } from 'react-native';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { Synagogue } from '../../Types';
 
-// Mock data (Replace this with actual data fetching logic)
-const synagogues = [
+const synagogues: Synagogue[] = [
   {
     id: 1,
-    name: 'Great Synagogue',
-    type: 'Orthodox',
+    name: 'Beit Knesset HaGadol Hadera',
+    type: 'Ashkenazi',
     nextPrayer: 'Mincha',
-    prayerTime: '5:00 PM',
-    rabbi: 'Rabbi Cohen',
-    address: '123 Main St, City',
-    image: 'https://example.com/synagogue1.jpg',
+    prayerTime: '17:00',
+    rabbi: 'Rabbi Yitzhak Levi',
+    address: 'Herzl Street 22, Hadera',
+    image: 'https://mekomot-eruim.co.il/images/businesses_multi/1677075964ruined-synagogue2.jpg', // Replace with actual image URL
   },
-  // Add more synagogues as needed
+  {
+    id: 2,
+    name: 'Heichal Shlomo Synagogue',
+    type: 'Sephardi',
+    nextPrayer: 'Arvit',
+    prayerTime: '19:15',
+    rabbi: 'Rabbi Eli Cohen',
+    address: 'Ben Gurion Boulevard 45, Hadera',
+    image: 'https://ynet-pic1.yit.co.il/cdn-cgi/image/f=auto,w=740,q=75/picserver5/crop_images/2022/05/22/ByuzH2ww9/ByuzH2ww9_0_0_1280_854_0_x-large.jpg', // Replace with actual image URL
+  },
+  {
+    id: 3,
+    name: 'Or Torah Center',
+    type: 'Sephardi',
+    nextPrayer: 'Shacharit',
+    prayerTime: '06:30',
+    rabbi: 'Rabbi Moshe Peretz',
+    address: 'Rabin Street 10, Hadera',
+    image: 'https://rikigruzman.co.il/wp-content/uploads/2019/03/1-3.jpg', // Replace with actual image URL
+  },
+  {
+    id: 4,
+    name: 'Mishkan Yisrael Chabad',
+    type: 'Chabad',
+    nextPrayer: 'Mincha',
+    prayerTime: '16:45',
+    rabbi: 'Rabbi Shlomo Goldstein',
+    address: 'HaShalom Street 5, Hadera',
+    image: 'https://mekomot-eruim.co.il/images/businesses_multi/1625389795rambam.hadera1.jpg', // Replace with actual image URL
+  },
 ];
 
 const SynagoguePage = () => {
