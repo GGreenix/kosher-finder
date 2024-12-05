@@ -9,10 +9,12 @@ import {
   Platform,
   StatusBar,
   ActivityIndicator,
+  Pressable,
 } from 'react-native';
 import * as Location from 'expo-location';
 import { ComplexZmanimCalendar, GeoLocation, TimeZone } from 'kosher-zmanim';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const TimesOfDayPage = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
@@ -79,8 +81,6 @@ const TimesOfDayPage = () => {
   }
 
   const formatTime = (date: Date) => {
-    console.log(typeof  date);
-    // return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     return date.toString();
   };
 
@@ -89,6 +89,9 @@ const TimesOfDayPage = () => {
       <Stack.Screen options={{ headerShown: false }} />
 
       <SafeAreaView style={styles.container}>
+      <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={24} color="#333" />
+        </Pressable>
         <ScrollView contentContainerStyle={styles.content}>
           <Text style={styles.title}>Jewish Times of Day (Zmanim)</Text>
 
@@ -155,6 +158,13 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    top: Platform.OS === 'android' ? (StatusBar.currentHeight || 0) + 10 : 10,
+    left: 10,
+    zIndex: 10,
+    padding: 10,
   },
   title: {
     fontSize: 24,

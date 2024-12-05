@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
+import TabBarIcon, { FontAwesome } from '@expo/vector-icons';
 
 
 export default function TabLayout() {
@@ -14,19 +14,21 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          // tabBarIcon: ({ color, focused }) => (
-          //   <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          // ),
+          
+          title: 'מסך הבית',
+          
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={35} name = "home" color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="TimesOfDayPage"
+        name="test"
         options={{
-          title: 'times-of-day',
-          // tabBarIcon: ({ color, focused }) => (
-          //   <TabBarIcon name={focused ? 'time' : 'time-outline'} color={color} />
-          // ),
+          title: 'יומיומי',
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name = "calendar" color={color} />
+          ),
         }}
       />
       

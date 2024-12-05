@@ -1155,7 +1155,7 @@
   dependencies:
     cross-spawn "^7.0.3"
 
-"@expo/vector-icons@^14.0.2", "@expo/vector-icons@^14.0.3":
+"@expo/vector-icons@^14.0.3", "@expo/vector-icons@^14.0.4":
   version "14.0.4"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-14.0.4.tgz#fa9d4351877312badf91a806598b2f0bab16039a"
   integrity sha512-+yKshcbpDfbV4zoXOgHxCwh7lkE9VVTT5T03OUlBsqfze1PLy6Hi4jp1vSb1GVbY6eskvMIivGVc9SKzIv0oEQ==
@@ -3861,7 +3861,7 @@ expo-modules-core@^2.0.3:
   dependencies:
     invariant "^2.2.4"
 
-expo-router@~3.5.23:
+expo-router@~3.5.24:
   version "3.5.24"
   resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-3.5.24.tgz#ac834b66c023151a3f919c456805cdd7377a677f"
   integrity sha512-wFi+PIUrOntF5cgg0PgBMlkxEZlWedIv5dWnPFEzN6Tr3A3bpsqdDLgOEIwvwd+pxn5DLzykTmg9EkQ1pPGspw==
