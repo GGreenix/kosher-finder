@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, ImageBackground, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Alert } from 'react-native';
 
 const DiscoverTab = () => {
+
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [apiResponse, setApiResponse] = useState(''); // State to hold API response
+
+  const callApi = async () => {
+    setLoading(true);
+    try {
+      
+      // Replace with your API Gateway endpoint
+      const apiUrl = 'https://1wgz6mhr7a.execute-api.il-central-1.amazonaws.com/default/DataBaseEndpoint';
+
+      // Replace with actual payload if needed
+      const response = await fetch(apiUrl, {
+        method: 'POST', // Change to 'GET', 'PUT', or 'DELETE' as required
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: 'Hello from React Native!' }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      // Set the response value to the state
+      setApiResponse(data || 'No Title'); // Assuming the response contains a `title` field
+    } catch (error) {
+      Alert.alert('Error', `Something went wrong: ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const data = [
     {
@@ -12,27 +43,20 @@ const DiscoverTab = () => {
       image: 'https://via.placeholder.com/300',
       route: '../components/TimesOfDayPage',
     },
-    {
-      title: 'זמני היום',
-      subtitle: '132 Exercises',
-      image: 'https://via.placeholder.com/300',
-      route: '../components/TimesOfDayPage',
-    },
-    {
-      title: 'זמני היום',
-      subtitle: '132 Exercises',
-      image: 'https://via.placeholder.com/300',
-      route: '../components/TimesOfDayPage',
-    },
+    
     // Add more items if needed
   ];
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>
+      <Text style={styles.title}>
+        {'API Response will appear here'}
+      </Text>
       {data.map((item, index) => (
         <Pressable
           key={index}
-          onPress={() => router.push(item.route)}
+          // onPress={() => router.push(item.route)}
+          onPress={callApi}
           style={styles.card}
         >
           <ImageBackground
