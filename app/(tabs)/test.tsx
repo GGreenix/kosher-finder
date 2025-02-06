@@ -14,7 +14,7 @@ const DiscoverTab = () => {
     try {
       
       // Replace with your API Gateway endpoint
-      const apiUrl = 'https://1wgz6mhr7a.execute-api.il-central-1.amazonaws.com/default/DataBaseEndpoint';
+      const apiUrl = '';
 
       // Replace with actual payload if needed
       const response = await fetch(apiUrl, {
