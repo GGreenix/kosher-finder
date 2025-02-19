@@ -17,31 +17,7 @@ import { Restaurant } from '@/app/Types';
 
 
 
-// Mock data as fallback (in real scenario, fetch data or pass it through context/state management)
-const mockRestaurants: Restaurant[] = [
-  {
-    id: 1,
-    name: 'Atza Sushi Bar | Hadera',
-    type: 'Asian Restaurant | Kosher',
-    kosherType: 'Mehadrin',
-    deliveryFee: '0',
-    deliveryTime: '30-40 min',
-    rating: '8.2',
-    image: 'https://example.com/sushi.jpg',
-    sponsored: true,
-  },
-  {
-    id: 2,
-    name: 'Pizza Hut | Tel Aviv',
-    type: 'Pizza | Kosher',
-    kosherType: 'Standard',
-    deliveryFee: '5',
-    deliveryTime: '25-35 min',
-    rating: '9.0',
-    image: 'https://example.com/pizza.jpg',
-    sponsored: false,
-  },
-];
+
 interface RestaurantCardProps {
     restaurant: Restaurant;
   }
@@ -91,39 +67,15 @@ const RestaurantPage: React.FC<RestaurantCardProps> = (restaurantProps) => {
       <ScrollView>
         {/* Restaurant Info */}
         <View style={styles.restaurantInfo}>
-          <Image source={{ uri: restaurant.image }} style={styles.logo} resizeMode="cover" />
+          {/* <Image source={{ uri: restaurant.image }} style={styles.logo} resizeMode="cover" /> */}
 
           <View style={styles.titleContainer}>
             <Text style={styles.restaurantName}>{restaurant.name}</Text>
-            {restaurant.sponsored && (
-              <View style={styles.sponsoredBadge}>
-                <Text style={styles.sponsoredText}>Sponsored</Text>
-              </View>
-            )}
+            
           </View>
 
           <View style={styles.detailsContainer}>
-            <View style={styles.detailRow}>
-              <Ionicons name="restaurant-outline" size={20} color="#666" />
-              <Text style={styles.detailText}>{restaurant.type}</Text>
-            </View>
-
-            <View style={styles.detailRow}>
-              <Ionicons name="star" size={20} color="#FFD700" />
-              <Text style={styles.detailText}>{restaurant.rating}</Text>
-            </View>
-
-            <View style={styles.detailRow}>
-              <Ionicons name="time-outline" size={20} color="#666" />
-              <Text style={styles.detailText}>{restaurant.deliveryTime}</Text>
-            </View>
-          </View>
-
-          <View style={styles.additionalInfo}>
-            <View style={styles.infoItem}>
-              <Ionicons name="bicycle-outline" size={20} color="#666" />
-              <Text style={styles.infoText}>Delivery Fee: {restaurant.deliveryFee}</Text>
-            </View>
+           
 
             <View style={styles.infoItem}>
               <Ionicons name="restaurant-outline" size={20} color="#666" />

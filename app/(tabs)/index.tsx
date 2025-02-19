@@ -52,6 +52,7 @@ const HomeScreen: React.FC = () => {
 
   // Function to fetch documents from Firestore based on the activeCategory.
   const fetchDocuments = async () => {
+    
     setLoading(true);
     try {
       // Use the activeCategory as the collection name.
@@ -88,15 +89,25 @@ const HomeScreen: React.FC = () => {
     if (documents.length === 0) {
       return <Text style={{ textAlign: 'center', marginTop: 20 }}>No data available</Text>;
     }
-    console.log(documents.at(0)['city'])
+    console.log(activeCategory)
     switch (activeCategory) {
-      case 'restaurants':
+      case 'resturants':
+        console.log("resturants")
         return (
           <View style={styles.restaurantsGrid}>
-            {documents.map((restaurant) => (
-              <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-            ))}
-          </View>
+  {documents.map((doc, index) => (
+    
+    <RestaurantCard
+      key={index}
+      restaurant={{
+        id: index,
+        city: doc['city'],
+        kosherType: doc['kosherType'],
+        name: doc['name'],
+      }}
+    />
+  ))}
+</View>
         );
       case 'synagogues':
         return (

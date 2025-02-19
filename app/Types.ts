@@ -5,13 +5,11 @@ export type SynagogueType = 'Ashkenazi' | 'Sephardi' | 'Mizrahi' | 'Chabad';
 export interface Restaurant {
   id: number;
   name: string;
-  type: string;
+  // type: string;
   kosherType: string;
-  deliveryFee: string;
-  deliveryTime: string;
-  rating: string;
-  image: string;
-  sponsored: boolean;
+  // image: string;
+  city: string;
+  // sponsored: boolean;
 }
 
 export interface GroceryStore {

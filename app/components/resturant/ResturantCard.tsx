@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRouter} from 'expo-router'; // Import useRouter for navigation
 import { restaurantStyles } from '@/app/styles/styles';
 import { Restaurant } from '@/app/Types';
+import { useRestaurant } from './ResturantContext';
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
@@ -15,29 +16,35 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
   return (
     <TouchableOpacity
       style={restaurantStyles.restaurantCard}
-      onPress={() => router.push(`/components/resturant/${restaurant.id}`)} // Navigate to dynamic restaurant page
+      onPress={() => {
+        
+        router.push({
+          pathname: `/components/resturant/${restaurant.id}`,
+          params: {
+            id: restaurant.id,
+            name: restaurant.name,
+            city: restaurant.city,
+            kosherType: restaurant.kosherType,
+          },
+        });
+        
+        
+
+      }} // Navigate to dynamic restaurant page
     >
-      <Image
+      {/* <Image
         source={{ uri: restaurant.image }}
         style={restaurantStyles.restaurantImage}
-      />
-      {restaurant.sponsored && (
-        <Text style={restaurantStyles.sponsoredText}>Sponsored</Text>
-      )}
+      /> */}
       <View style={restaurantStyles.restaurantInfo}>
         <Text numberOfLines={1} style={restaurantStyles.restaurantName}>
           {restaurant.name}
         </Text>
-        <Text numberOfLines={1} style={restaurantStyles.restaurantType}>
+        {/* <Text numberOfLines={1} style={restaurantStyles.restaurantType}>
           {restaurant.type}
-        </Text>
+        </Text> */}
         <View style={restaurantStyles.kosherBadge}>
           <Text style={restaurantStyles.kosherText}>{restaurant.kosherType}</Text>
-        </View>
-        <View style={restaurantStyles.restaurantMetrics}>
-          <Text style={restaurantStyles.deliveryPrice}>₪{restaurant.deliveryFee}</Text>
-          <Text style={restaurantStyles.deliveryTime}>{restaurant.deliveryTime}</Text>
-          <Text style={restaurantStyles.rating}>{restaurant.rating}</Text>
         </View>
       </View>
     </TouchableOpacity>
