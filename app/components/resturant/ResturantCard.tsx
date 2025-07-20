@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { useRouter} from 'expo-router'; // Import useRouter for navigation
 import { restaurantStyles } from '@/app/styles/styles';
 import { Restaurant } from '@/app/Types';
 import { useRestaurant } from './ResturantContext';
@@ -11,26 +11,16 @@ interface RestaurantCardProps {
 }
 
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
-  const router = useRouter(); // Access router
+  const navigation = useNavigation(); // Switch from useRouter to useNavigation
 
   return (
     <TouchableOpacity
       style={restaurantStyles.restaurantCard}
       onPress={() => {
-        
-        router.push({
-          pathname: `/components/resturant/${restaurant.id}`,
-          params: {
-            id: restaurant.id,
-            name: restaurant.name,
-            city: restaurant.city,
-            kosherType: restaurant.kosherType,
-          },
+        navigation.navigate('Restaurant', {
+          restaurantId: restaurant.id
         });
-        
-        
-
-      }} // Navigate to dynamic restaurant page
+      }}
     >
       {/* <Image
         source={{ uri: restaurant.image }}
